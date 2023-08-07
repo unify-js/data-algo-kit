@@ -1,0 +1,39 @@
+{
+  "name": "@unify-js/data-algo-kit",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "tsc --project tsconfig.development.json --watch",
+    "build": "tsc --project tsconfig.production.json",
+    "lint": "eslint",
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "cz": "cz"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.2",
+    "@types/node": "^20.4.5",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
