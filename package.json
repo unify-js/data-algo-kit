@@ -13,8 +13,8 @@
     "dev": "tsc --project tsconfig.development.json --watch",
     "build": "tsc --project tsconfig.production.json",
     "lint": "eslint",
-    "test": "node --test",
-    "test:watch": "node --test --watch",
+    "test": "node --test dist/",
+    "test:watch": "node --test --watch dist/",
     "cz": "cz"
   },
   "keywords": [],
