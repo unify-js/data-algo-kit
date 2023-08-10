@@ -1,7 +1,7 @@
-import type { Sort, CompareFunction } from "../types.js";
-import { swap } from "../utils.js";
+import type { Sort, CompareFunction } from "./types.js";
+import { swap } from "./utils.js";
 
-export default class InsertSort<T> implements Sort<T> {
+export default class InsertionSort<T> implements Sort<T> {
   #arr: T[];
   #compareFunc: CompareFunction<T>;
   constructor(arr: T[], compareFunc: CompareFunction<T>) {

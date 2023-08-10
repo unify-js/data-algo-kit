@@ -1,7 +1,7 @@
 // 选择排序
 
-import type { CompareFunction, Sort } from "../types.js";
-import { swap } from "../utils.js";
+import type { CompareFunction, Sort } from "./types.js";
+import { swap } from "./utils.js";
 
 export default class SelectionSort<T> implements Sort<T> {
   #arr: T[];
