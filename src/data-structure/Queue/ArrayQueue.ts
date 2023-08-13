@@ -1,13 +1,21 @@
-import type { QueueInterface } from "./types.js";
+interface ArrayQueueInterface<T> {
+  size: number;
+  isEmpty: boolean;
 
-export default class ArrayQueue<T> implements QueueInterface<T> {
+  enqueue: (element: T) => void;
+  dequeue: () => T | undefined;
+  getFront: () => T | undefined;
+  clear: () => void;
+}
+
+export default class ArrayQueue<T> implements ArrayQueueInterface<T> {
   #queue: T[] = [];
 
-  getSize(): number {
+  get size(): number {
     return this.#queue.length;
   }
 
-  isEmpty(): boolean {
+  get isEmpty(): boolean {
     return this.#queue.length === 0;
   }
 
@@ -21,5 +29,9 @@ export default class ArrayQueue<T> implements QueueInterface<T> {
 
   getFront(): T | undefined {
     return this.#queue[0];
+  }
+
+  clear() {
+    this.#queue = [];
   }
 }
