@@ -4,71 +4,74 @@ import assert from "node:assert/strict";
 import LoopQueue from "./LoopQueue.js";
 
 test("LoopQueue: empty", () => {
-  const arrayQueye = new LoopQueue();
+  const queue = new LoopQueue(5);
 
-  assert.equal(arrayQueye.size, 0);
-  assert.equal(arrayQueye.isEmpty, true);
+  assert.strictEqual(queue.size, 0);
+  assert.strictEqual(queue.isEmpty, true);
 });
 
-test("ArrayQueye: enqueue", () => {
-  const arrayQueye = new LoopQueue<number>();
+test("ArrayQueue: enqueue", () => {
+  const queue = new LoopQueue<number>(2);
 
-  arrayQueye.enqueue(1);
-  arrayQueye.enqueue(2);
-  arrayQueye.enqueue(3);
+  queue.enqueue(1);
+  queue.enqueue(2);
+  queue.enqueue(3);
 
-  assert.equal(arrayQueye.size, 3);
-  assert.equal(arrayQueye.isEmpty, false);
+  assert.strictEqual(queue.size, 3);
+  assert.strictEqual(queue.isEmpty, false);
 });
 
-test("ArrayQueye: dequeue", () => {
-  const arrayQueye = new LoopQueue<number>();
+test("ArrayQueue: dequeue", () => {
+  const queue = new LoopQueue<number>();
 
-  arrayQueye.enqueue(1);
-  arrayQueye.enqueue(2);
+  queue.enqueue(1);
+  queue.enqueue(2);
 
-  assert.equal(arrayQueye.dequeue(), 1);
-  assert.equal(arrayQueye.size, 1);
+  assert.strictEqual(queue.dequeue(), 1);
+  assert.strictEqual(queue.size, 1);
 });
 
-test("ArrayQueye: enqueue and dequeue", () => {
-  const arrayQueye = new LoopQueue<number>();
+test("ArrayQueue: capacity", () => {
+  const queue = new LoopQueue<number>(3);
 
-  arrayQueye.enqueue(1);
-  arrayQueye.enqueue(2);
-  arrayQueye.enqueue(3);
+  queue.enqueue(1);
+  queue.enqueue(2);
+  queue.enqueue(3);
+  assert.strictEqual(queue.capacity, 3);
 
-  assert.equal(arrayQueye.dequeue(), 1);
-  assert.equal(arrayQueye.dequeue(), 2);
+  queue.enqueue(4);
+  queue.enqueue(5);
+  queue.enqueue(6);
+  assert.strictEqual(queue.capacity, 6);
 
-  arrayQueye.enqueue(4);
-  arrayQueye.enqueue(5);
+  queue.enqueue(7);
+  assert.strictEqual(queue.capacity, 12);
 
-  assert.equal(arrayQueye.dequeue(), 3);
-  assert.equal(arrayQueye.dequeue(), 4);
-  assert.equal(arrayQueye.dequeue(), 5);
-  assert.equal(arrayQueye.dequeue(), undefined);
+  for (let i = 0; i < 4; i++) {
+    queue.dequeue();
+  }
+  assert.strictEqual(queue.capacity, 6);
 });
 
-test("ArrayQueye: getFront", () => {
-  const arrayQueye = new LoopQueue<number>();
+test("ArrayQueue: getFront", () => {
+  const queue = new LoopQueue<number>();
 
-  arrayQueye.enqueue(1);
-  arrayQueye.enqueue(2);
+  queue.enqueue(1);
+  queue.enqueue(2);
 
-  assert.equal(arrayQueye.getFront(), 1);
-  assert.equal(arrayQueye.size, 2);
+  assert.strictEqual(queue.getFront(), 1);
+  assert.strictEqual(queue.size, 2);
 });
 
-test("ArrayQueye: clear", () => {
-  const arrayQueye = new LoopQueue<number>();
+test("ArrayQueue: clear", () => {
+  const queue = new LoopQueue<number>();
 
-  arrayQueye.enqueue(1);
-  arrayQueye.enqueue(2);
-  arrayQueye.enqueue(3);
+  queue.enqueue(1);
+  queue.enqueue(2);
+  queue.enqueue(3);
 
-  arrayQueye.clear();
+  queue.clear();
 
-  assert.equal(arrayQueye.size, 0);
-  assert.equal(arrayQueye.isEmpty, true);
+  assert.strictEqual(queue.size, 0);
+  assert.strictEqual(queue.isEmpty, true);
 });

@@ -6,8 +6,8 @@ import ArrayQueue from "./ArrayQueue.js";
 test("ArrayQueue: empty", () => {
   const arrayQueye = new ArrayQueue();
 
-  assert.equal(arrayQueye.size, 0);
-  assert.equal(arrayQueye.isEmpty, true);
+  assert.strictEqual(arrayQueye.size, 0);
+  assert.strictEqual(arrayQueye.isEmpty, true);
 });
 
 test("ArrayQueye: enqueue", () => {
@@ -17,8 +17,8 @@ test("ArrayQueye: enqueue", () => {
   arrayQueye.enqueue(2);
   arrayQueye.enqueue(3);
 
-  assert.equal(arrayQueye.size, 3);
-  assert.equal(arrayQueye.isEmpty, false);
+  assert.strictEqual(arrayQueye.size, 3);
+  assert.strictEqual(arrayQueye.isEmpty, false);
 });
 
 test("ArrayQueye: dequeue", () => {
@@ -27,8 +27,8 @@ test("ArrayQueye: dequeue", () => {
   arrayQueye.enqueue(1);
   arrayQueye.enqueue(2);
 
-  assert.equal(arrayQueye.dequeue(), 1);
-  assert.equal(arrayQueye.size, 1);
+  assert.strictEqual(arrayQueye.dequeue(), 1);
+  assert.strictEqual(arrayQueye.size, 1);
 });
 
 test("ArrayQueye: enqueue and dequeue", () => {
@@ -38,16 +38,16 @@ test("ArrayQueye: enqueue and dequeue", () => {
   arrayQueye.enqueue(2);
   arrayQueye.enqueue(3);
 
-  assert.equal(arrayQueye.dequeue(), 1);
-  assert.equal(arrayQueye.dequeue(), 2);
+  assert.strictEqual(arrayQueye.dequeue(), 1);
+  assert.strictEqual(arrayQueye.dequeue(), 2);
 
   arrayQueye.enqueue(4);
   arrayQueye.enqueue(5);
 
-  assert.equal(arrayQueye.dequeue(), 3);
-  assert.equal(arrayQueye.dequeue(), 4);
-  assert.equal(arrayQueye.dequeue(), 5);
-  assert.equal(arrayQueye.dequeue(), undefined);
+  assert.strictEqual(arrayQueye.dequeue(), 3);
+  assert.strictEqual(arrayQueye.dequeue(), 4);
+  assert.strictEqual(arrayQueye.dequeue(), 5);
+  assert.strictEqual(arrayQueye.dequeue(), undefined);
 });
 
 test("ArrayQueye: getFront", () => {
@@ -56,8 +56,8 @@ test("ArrayQueye: getFront", () => {
   arrayQueye.enqueue(1);
   arrayQueye.enqueue(2);
 
-  assert.equal(arrayQueye.getFront(), 1);
-  assert.equal(arrayQueye.size, 2);
+  assert.strictEqual(arrayQueye.getFront(), 1);
+  assert.strictEqual(arrayQueye.size, 2);
 });
 
 test("ArrayQueye: clear", () => {
@@ -69,6 +69,6 @@ test("ArrayQueye: clear", () => {
 
   arrayQueye.clear();
 
-  assert.equal(arrayQueye.size, 0);
-  assert.equal(arrayQueye.isEmpty, true);
+  assert.strictEqual(arrayQueye.size, 0);
+  assert.strictEqual(arrayQueye.isEmpty, true);
 });
