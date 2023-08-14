@@ -17,7 +17,7 @@ export default class LoopQueue<T> implements LoopQueueInterface<T> {
   #initialCapacity: number;
 
   constructor(capacity: number = 10) {
-    this.#data = new Array(capacity + 1);
+    this.#data = new Array(capacity);
     this.#front = 0;
     this.#tail = 0;
     this.#size = 0;
@@ -25,15 +25,15 @@ export default class LoopQueue<T> implements LoopQueueInterface<T> {
   }
 
   get isEmpty() {
-    return this.#front === this.#tail;
+    return this.#size === 0;
   }
 
   get capacity() {
-    return this.#data.length - 1;
+    return this.#data.length;
   }
 
   get #isFull() {
-    return (this.#tail + 1) % this.#data.length === this.#front;
+    return this.#data.length === this.#size;
   }
 
   get size() {
@@ -41,7 +41,7 @@ export default class LoopQueue<T> implements LoopQueueInterface<T> {
   }
 
   #resize(newCapacity: number) {
-    const newData = new Array(newCapacity + 1);
+    const newData = new Array(newCapacity);
 
     for (let i = 0; i < this.#size; i++) {
       newData[i] = this.#data[(i + this.#front) % this.#data.length];
@@ -72,7 +72,7 @@ export default class LoopQueue<T> implements LoopQueueInterface<T> {
     this.#front = (this.#front + 1) % this.#data.length;
     this.#size--;
 
-    if (this.#size === this.capacity / 4 && this.capacity / 2 !== 0) {
+    if (this.#size === Math.floor(this.capacity / 4) && Math.floor(this.capacity / 2) !== 0) {
       this.#resize(this.capacity / 2);
     }
 
