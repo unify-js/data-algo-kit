@@ -32,10 +32,6 @@ export default class LoopQueue<T> implements LoopQueueInterface<T> {
     return this.#data.length;
   }
 
-  get #isFull() {
-    return this.#data.length === this.#size;
-  }
-
   get size() {
     return this.#size;
   }
@@ -54,7 +50,7 @@ export default class LoopQueue<T> implements LoopQueueInterface<T> {
   }
 
   enqueue(element: T) {
-    if (this.#isFull) {
+    if (this.#size === this.capacity) {
       this.#resize(this.capacity * 2);
     }
 
@@ -88,7 +84,7 @@ export default class LoopQueue<T> implements LoopQueueInterface<T> {
   }
 
   clear() {
-    this.#data = new Array(this.#initialCapacity + 1);
+    this.#data = new Array(this.#initialCapacity);
     this.#front = 0;
     this.#tail = 0;
     this.#size = 0;

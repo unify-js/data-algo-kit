@@ -10,7 +10,7 @@ test("LoopQueue: empty", () => {
   assert.strictEqual(queue.isEmpty, true);
 });
 
-test("ArrayQueue: enqueue", () => {
+test("LoopQueue: enqueue", () => {
   const queue = new LoopQueue<number>(2);
 
   queue.enqueue(1);
@@ -21,7 +21,7 @@ test("ArrayQueue: enqueue", () => {
   assert.strictEqual(queue.isEmpty, false);
 });
 
-test("ArrayQueue: dequeue", () => {
+test("LoopQueue: dequeue", () => {
   const queue = new LoopQueue<number>();
 
   queue.enqueue(1);
@@ -31,7 +31,7 @@ test("ArrayQueue: dequeue", () => {
   assert.strictEqual(queue.size, 1);
 });
 
-test("ArrayQueue: capacity", () => {
+test("LoopQueue: capacity", () => {
   const queue = new LoopQueue<number>(3);
 
   queue.enqueue(1);
@@ -53,7 +53,7 @@ test("ArrayQueue: capacity", () => {
   assert.strictEqual(queue.capacity, 6);
 });
 
-test("ArrayQueue: getFront", () => {
+test("LoopQueue: getFront", () => {
   const queue = new LoopQueue<number>();
 
   queue.enqueue(1);
@@ -63,7 +63,7 @@ test("ArrayQueue: getFront", () => {
   assert.strictEqual(queue.size, 2);
 });
 
-test("ArrayQueue: clear", () => {
+test("LoopQueue: clear", () => {
   const queue = new LoopQueue<number>();
 
   queue.enqueue(1);
