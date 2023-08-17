@@ -24,6 +24,23 @@ test("Deque: adding and removing elements", () => {
   assert.strictEqual(deque.removeLast(), undefined);
 });
 
+test("Deque: addLast", () => {
+  const deque = new Deque<number>({
+    capacity: 5,
+  });
+
+  deque.addLast(1);
+  assert.strictEqual(deque.peekFirst(), 1);
+  assert.strictEqual(deque.peekLast(), 1);
+  assert.strictEqual(deque.size, 1);
+  assert.strictEqual(deque.isEmpty, false);
+  assert.strictEqual(deque.capacity, 5);
+  assert.strictEqual(deque.removeFirst(), 1);
+
+  deque.addLast(1);
+  assert.strictEqual(deque.removeLast(), 1);
+});
+
 test("Deque: queue status", () => {
   const deque = new Deque<number>();
   assert.strictEqual(deque.size, 0);

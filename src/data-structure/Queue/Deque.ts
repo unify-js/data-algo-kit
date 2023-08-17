@@ -89,7 +89,7 @@ export class Deque<T> implements DequeInterface<T> {
     }
 
     // new element will be added to the (this.tail + 1) position
-    this.#data[this.tail + 1] = element;
+    this.#data[this.getSafeIndex(this.tail + 1)] = element;
     this.#size++;
 
     this.#doubleCapacity();
