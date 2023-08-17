@@ -54,3 +54,23 @@ test("Deque: queue clear", () => {
   assert.strictEqual(deque.size, 0);
   assert.strictEqual(deque.isEmpty, true);
 });
+
+test("Deque: queue capacity", () => {
+  const deque = new Deque<number>(1);
+
+  assert.strictEqual(deque.capacity, 1);
+
+  deque.addFirst(1);
+  assert.strictEqual(deque.capacity, 2);
+
+  deque.addFirst(2);
+  assert.strictEqual(deque.capacity, 4);
+
+  deque.addFirst(3);
+  deque.addFirst(4);
+  assert.strictEqual(deque.capacity, 8);
+
+  deque.removeFirst();
+  deque.removeFirst();
+  assert.strictEqual(deque.capacity, 4);
+});

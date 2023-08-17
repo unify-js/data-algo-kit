@@ -13,78 +13,80 @@ interface DequeInterface<T> {
 }
 
 export class Deque<T> implements DequeInterface<T> {
-  private data: T[];
-  private front = 0;
-  private tail = 0;
-  private initialCapacity: number;
+  #data: T[];
+  #front = 0;
+  #size = 0;
 
   constructor(capacity = 10) {
-    this.data = new Array(capacity + 1);
-    this.initialCapacity = capacity;
-  }
-
-  get size() {
-    if (this.tail >= this.front) {
-      return this.tail - this.front;
-    }
-
-    return this.data.length - (this.front - this.tail);
+    this.#data = new Array(capacity);
   }
 
   get isEmpty() {
-    return this.front === this.tail;
-  }
-
-  get isFull() {
-    return this.front === (this.tail + 1) % this.data.length;
+    return this.#size === 0;
   }
 
   get capacity() {
-    return this.data.length - 1;
+    return this.#data.length;
   }
 
-  private get lastElementIndex() {
-    if (this.tail === 0) {
-      return this.data.length - 1;
-    }
-
-    return this.tail - 1;
+  get tail() {
+    return this.getSafeIndex(this.#front + this.#size - 1);
   }
 
-  private resize(capacity: number) {
-    const newData = new Array<T>(capacity + 1);
+  get size() {
+    return this.#size;
+  }
 
-    for (let i = 0; i < this.size; i++) {
-      newData[i] = this.data[(this.front + i) % this.capacity];
+  private getSafeIndex(index: number) {
+    return (index + this.capacity) % this.capacity;
+  }
+
+  #resize(capacity: number) {
+    const newData = new Array<T>(capacity);
+
+    for (let i = 0; i < this.#size; i++) {
+      newData[i] = this.#data[(this.#front + i) % this.capacity];
     }
 
-    this.data = newData;
-    this.front = 0;
-    this.tail = this.size;
+    this.#data = newData;
+    this.#front = 0;
+  }
+
+  #halfCapacity() {
+    if (this.size === Math.floor(this.capacity / 4) && Math.floor(this.capacity / 2) !== 0) {
+      this.#resize(Math.floor(this.capacity / 2));
+    }
+  }
+
+  #doubleCapacity() {
+    if (this.size === this.capacity) {
+      this.#resize(this.capacity * 2);
+    }
   }
 
   addFirst(element: T) {
-    if (this.size === this.capacity) {
-      this.resize(this.capacity * 2);
+    if (this.#size === this.capacity) {
+      this.#resize(this.capacity * 2);
     }
 
-    // Confirm that the index of the new element is (index - 1). If the former value was 0, the index becomes (capacity - 1).
-    if (this.front === 0) {
-      this.front = this.data.length - 1;
-    } else {
-      this.front--;
-    }
+    // new element will be added to the (this.front -1) position
+    this.#front = this.getSafeIndex(this.#front - 1);
+    this.#data[this.#front] = element;
+    this.#size++;
 
-    this.data[this.front] = element;
+    this.#doubleCapacity();
   }
 
   addLast(element: T) {
-    if (this.size === this.capacity) {
-      this.resize(this.capacity * 2);
+    if (this.#size === this.capacity) {
+      this.#resize(this.capacity * 2);
     }
 
-    this.data[this.tail] = element;
-    this.tail = (this.tail + 1) % this.capacity;
+    // new element will be added to the (this.tail + 1) position
+    this.#data[this.tail + 1] = element;
+    this.#size++;
+
+    this.#doubleCapacity();
   }
 
   removeFirst(): T | undefined {
@@ -92,13 +94,11 @@ export class Deque<T> implements DequeInterface<T> {
       return undefined;
     }
 
-    const result: T = this.data[this.front];
+    const result: T = this.#data[this.#front];
+    this.#front = this.getSafeIndex(this.#front + 1);
+    this.#size--;
 
-    if (this.front === this.data.length - 1) {
-      this.front = 0;
-    } else {
-      this.front++;
-    }
+    this.#halfCapacity();
 
     return result;
   }
@@ -108,13 +108,10 @@ export class Deque<T> implements DequeInterface<T> {
       return undefined;
     }
 
-    const result = this.data[this.lastElementIndex];
+    const result = this.#data[this.tail];
+    this.#size--;
 
-    if (this.tail === 0) {
-      this.tail = this.data.length - 1;
-    } else {
-      this.tail--;
-    }
+    this.#halfCapacity();
 
     return result;
   }
@@ -123,8 +120,7 @@ export class Deque<T> implements DequeInterface<T> {
     if (this.isEmpty) {
       return undefined;
     }
-
-    return this.data[this.front];
+    return this.#data[this.#front];
   }
 
   peekLast(): T | undefined {
@@ -132,12 +128,12 @@ export class Deque<T> implements DequeInterface<T> {
       return undefined;
     }
 
-    return this.data[this.lastElementIndex];
+    return this.#data[this.tail];
   }
 
   clear() {
-    this.data = new Array(this.initialCapacity);
-    this.front = 0;
-    this.tail = 0;
+    this.#data = new Array(this.capacity);
+    this.#front = 0;
+    this.#size = 0;
   }
 }
