@@ -16,9 +16,13 @@ export class Deque<T> implements DequeInterface<T> {
   #data: T[];
   #front = 0;
   #size = 0;
+  #autoShrink: boolean;
 
-  constructor(capacity = 10) {
+  constructor(options?: { capacity?: number; autoShrink?: boolean }) {
+    const { capacity = 10, autoShrink = false } = options || {};
+
     this.#data = new Array(capacity);
+    this.#autoShrink = autoShrink;
   }
 
   get isEmpty() {
@@ -53,6 +57,8 @@ export class Deque<T> implements DequeInterface<T> {
   }
 
   #halfCapacity() {
+    if (!this.#autoShrink) return;
+
     if (this.size === Math.floor(this.capacity / 4) && Math.floor(this.capacity / 2) !== 0) {
       this.#resize(Math.floor(this.capacity / 2));
     }

@@ -56,7 +56,27 @@ test("Deque: queue clear", () => {
 });
 
 test("Deque: queue capacity", () => {
-  const deque = new Deque<number>(1);
+  const deque = new Deque<number>({ capacity: 1 });
+
+  assert.strictEqual(deque.capacity, 1);
+
+  deque.addFirst(1);
+  assert.strictEqual(deque.capacity, 2);
+
+  deque.addFirst(2);
+  assert.strictEqual(deque.capacity, 4);
+
+  deque.addFirst(3);
+  deque.addFirst(4);
+  assert.strictEqual(deque.capacity, 8);
+
+  deque.removeFirst();
+  deque.removeFirst();
+  assert.strictEqual(deque.capacity, 8);
+});
+
+test("Deque: queue capacity autoShrink", () => {
+  const deque = new Deque<number>({ capacity: 1, autoShrink: true });
 
   assert.strictEqual(deque.capacity, 1);
 
