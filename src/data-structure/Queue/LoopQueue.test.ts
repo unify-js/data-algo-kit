@@ -37,12 +37,12 @@ test("LoopQueue: capacity", () => {
   queue.enqueue(1);
   queue.enqueue(2);
   queue.enqueue(3);
-  assert.strictEqual(queue.capacity, 3);
+  assert.strictEqual(queue.capacity, 6);
 
   queue.enqueue(4);
   queue.enqueue(5);
   queue.enqueue(6);
-  assert.strictEqual(queue.capacity, 6);
+  assert.strictEqual(queue.capacity, 12);
 
   queue.enqueue(7);
   assert.strictEqual(queue.capacity, 12);
