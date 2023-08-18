@@ -1,25 +1,25 @@
+import { Deque } from "../Queue/Deque.js";
 import type { Stack } from "./types.js";
 
-export default class ArrayStack<T> implements Stack<T> {
-  #arr: T[] = [];
+export class ArrayStack<T> implements Stack<T> {
+  #deque = new Deque<T>();
 
+  get size() {
+    return this.#deque.size;
+  }
+
+  get isEmpty() {
+    return this.#deque.isEmpty;
+  }
   push(item: T): void {
-    this.#arr.push(item);
+    this.#deque.addLast(item);
   }
 
   pop(): T | undefined {
-    return this.#arr.pop();
+    return this.#deque.removeLast();
   }
 
   peek(): T | undefined {
-    return this.#arr[this.#arr.length - 1];
-  }
-
-  isEmpty() {
-    return this.#arr.length === 0;
-  }
-
-  getSize() {
-    return this.#arr.length;
+    return this.#deque.peekLast();
   }
 }
