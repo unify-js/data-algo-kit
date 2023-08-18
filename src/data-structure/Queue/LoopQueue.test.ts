@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import LoopQueue from "./LoopQueue.js";
+import { LoopQueue } from "./LoopQueue.js";
 
 test("LoopQueue: empty", () => {
   const queue = new LoopQueue(5);

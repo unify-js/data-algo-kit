@@ -11,7 +11,7 @@ interface LoopQueueInterface<T> {
   clear: () => void;
 }
 
-export default class LoopQueue<T> implements LoopQueueInterface<T> {
+export class LoopQueue<T> implements LoopQueueInterface<T> {
   deque: Deque<T>;
 
   constructor(capacity: number = 10) {

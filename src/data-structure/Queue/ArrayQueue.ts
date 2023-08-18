@@ -8,7 +8,7 @@ interface ArrayQueueInterface<T> {
   clear: () => void;
 }
 
-export default class ArrayQueue<T> implements ArrayQueueInterface<T> {
+export class ArrayQueue<T> implements ArrayQueueInterface<T> {
   #queue: T[] = [];
 
   get size(): number {
