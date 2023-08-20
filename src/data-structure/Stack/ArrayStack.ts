@@ -1,4 +1,4 @@
-import { Deque } from "../Queue/Deque.js";
+import { Deque } from "../Deque/index.js";
 import type { Stack } from "./types.js";
 
 export class ArrayStack<T> implements Stack<T> {

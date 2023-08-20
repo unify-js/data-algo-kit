@@ -1,4 +1,4 @@
-import { Deque } from "./Deque.js";
+import { Deque } from "../Deque/index.js";
 
 interface LoopQueueInterface<T> {
   size: number;

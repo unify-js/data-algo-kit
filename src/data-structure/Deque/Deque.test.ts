@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { Deque } from "./Deque.js";
+import { Deque } from "./index.js";
 
 test("Deque: adding and removing elements", () => {
   const deque = new Deque<number>();
