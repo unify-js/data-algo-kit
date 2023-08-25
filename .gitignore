@@ -3,6 +3,7 @@ node_modules
 dist
 types
 coverage
+docs
 
 # Editor directories and files
 .vscode/*
