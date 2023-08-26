@@ -1,24 +1,26 @@
-# Node TypeScript Template
+# @unify-js/data-algo-kit
 
-## How to use
+A toolkit of data structures and algorithms for JavaScript.
 
-### Development
+- ESM only
+- Written in TypeScript
 
-```bash
-pnpm dev
+## Installation
+
+```sh
+npm install @unify-js/data-algo-kit
 ```
 
-### Production
+## Examples
 
-```bash
-pnpm build
-```
+```ts
+import { Dequeue } from "@unify-js/data-algo-kit";
 
-### Testing
+const deque = new Deque<number>();
 
-Before running tests, make sure you have built the project.
+deque.addFirst(1);
+deque.addLast(2);
 
-```bash
-pnpm dev # or pnpm build
-pnpm test # or pnpm test:watch
+deque.removeFirst();
+deque.removeLast();
 ```
