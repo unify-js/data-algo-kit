@@ -127,8 +127,7 @@ export class LinkedList<E> implements LinkListInterface<E> {
 
     while (current !== null) {
       current = current.next;
-
-      if (isEqual(current, element)) {
+      if (isEqual(current?.element, element)) {
         return true;
       }
     }
