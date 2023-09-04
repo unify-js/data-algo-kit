@@ -10,7 +10,8 @@
     "alwaysStrict": true /* Parse in strict mode and emit "use strict" for each source file. */,
     "baseUrl": "./src" /* Base directory to resolve non-absolute module names. */,
     "skipLibCheck": true /* Skip type checking of declaration files. */,
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    "noEmitOnError": true /* Do not emit outputs if any type checking errors were reported. */
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
