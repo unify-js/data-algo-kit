@@ -16,24 +16,26 @@
     "lint": "eslint",
     "test": "node --enable-source-maps --test dist/",
     "test:watch": "node --enable-source-maps --test --watch dist/",
-    "cz": "cz"
+    "cz": "cz",
+    "cs": "changeset"
   },
   "keywords": [],
   "author": "",
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.2",
-    "@types/lodash-es": "^4.17.8",
-    "@types/node": "^20.5.1",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
+    "@changesets/cli": "^2.26.2",
+    "@tsconfig/recommended": "^1.0.3",
+    "@types/lodash-es": "^4.17.9",
+    "@types/node": "^20.6.2",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.47.0",
+    "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "lodash-es": "^4.17.21",
-    "prettier": "^3.0.2",
-    "typedoc": "^0.24.8",
-    "typescript": "^5.1.6"
+    "prettier": "^3.0.3",
+    "typedoc": "^0.25.1",
+    "typescript": "^5.2.2"
   },
   "config": {
     "commitizen": {
