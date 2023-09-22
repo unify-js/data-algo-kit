@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./publish-package.sh
+source ./.github/scripts/utils.sh
 
 pnpm install || utils::check_fail $? "pnpm install failed"
 pnpm test || utils::check_fail $? "test failed"
