@@ -1,29 +1,29 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { sort } from "./SelectionSort.js";
+import { sort } from "./insertionSort.js";
 
-test("SelectionSort: empty array", () => {
+test("InsertionSort: empty array", () => {
   const insertionSort = sort([], (a, b) => a - b);
   assert.deepStrictEqual(insertionSort.sort(), []);
 });
 
-test("SelectionSort: ordered array", () => {
+test("InsertionSort: ordered array", () => {
   const insertionSort = sort([1, 2, 3, 4, 5], (a, b) => a - b);
   assert.deepStrictEqual(insertionSort.sort(), [1, 2, 3, 4, 5]);
 });
 
-test("SelectionSort: reverse ordered array", () => {
+test("InsertionSort: reverse ordered array", () => {
   const insertionSort = sort([5, 4, 3, 2, 1], (a, b) => a - b);
   assert.deepStrictEqual(insertionSort.sort(), [1, 2, 3, 4, 5]);
 });
 
-test("SelectionSort: unordered array", () => {
+test("InsertionSort: unordered array", () => {
   const insertionSort = sort([1, 4, 2, 3, 6, 5], (a, b) => a - b);
   assert.deepStrictEqual(insertionSort.sort(), [1, 2, 3, 4, 5, 6]);
 });
 
-test("SelectionSort: array has duplicated elements", () => {
+test("InsertionSort: array has duplicated elements", () => {
   const insertionSort = sort([1, 4, 2, 3, 6, 5, 5], (a, b) => a - b);
   assert.deepStrictEqual(insertionSort.sort(), [1, 2, 3, 4, 5, 5, 6]);
 });

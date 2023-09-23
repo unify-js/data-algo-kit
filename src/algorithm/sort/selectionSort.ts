@@ -1,5 +1,3 @@
-// 选择排序
-
 import type { CompareFunction } from "./types.js";
 import { swap } from "./utils.js";
 
