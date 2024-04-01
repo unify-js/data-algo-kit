@@ -19,11 +19,11 @@ export class ArrayGenerator {
     return arr;
   }
 
-  static generateRandomArray(arrayLength: number, minNum = 0, maxNum = 100): number[] {
+  static generateRandomArray(arrayLength: number): number[] {
     const arr = new Array(arrayLength);
 
     for (let i = 0; i < arrayLength; i++) {
-      const randomNum = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+      const randomNum = Math.floor(Math.random() * (arrayLength + 1));
       arr[i] = randomNum;
     }
 
@@ -40,7 +40,7 @@ export class SortingHelper {
         return false;
       }
     }
-
+    console.log("true");
     return true;
   }
 }
